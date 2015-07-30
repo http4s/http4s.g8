@@ -8,3 +8,5 @@ libraryDependencies ++= Seq(
   "org.http4s" %% "http4s-dsl"         % "$http4s_version$",
   "org.http4s" %% "http4s-argonaut"    % "$http4s_version$"
 )
+
+libraryDependencies += "org.slf4j" % "slf4j-simple" % "1.6.4"
