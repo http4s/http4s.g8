@@ -1,6 +1,6 @@
 # http4s giter8 template
 
-Generate an http4s service on the blaze backend with Argonaut.
+Generate an http4s service on the blaze backend with Circe.
 
 1. [Install sbt](http://www.scala-sbt.org/0.13/docs/Setup.html)
 2. sbt -sbt-version 0.13.13 new http4s/http4s.g8
