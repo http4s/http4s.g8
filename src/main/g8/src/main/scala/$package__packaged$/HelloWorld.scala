@@ -1,4 +1,4 @@
-package $organization$
+package $package$
 
 import io.circe._
 import org.http4s._
