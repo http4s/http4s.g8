@@ -1,4 +1,4 @@
-package $organization$
+package $package$
 
 import java.util.concurrent.{ExecutorService, Executors}
 
