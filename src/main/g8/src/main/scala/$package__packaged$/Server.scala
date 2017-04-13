@@ -4,7 +4,7 @@ import java.util.concurrent.{ExecutorService, Executors}
 
 import scala.util.Properties.envOrNone
 
-import fs2.Task
+import fs2.{Task, Stream}
 
 import org.http4s.server.Server
 import org.http4s.util.StreamApp
@@ -17,7 +17,7 @@ object BlazeExample extends StreamApp {
   val ip   : String           = "0.0.0.0"
   val pool : ExecutorService  = Executors.newCachedThreadPool()
 
-  def main(args: List[String]) =
+  override def main(args: List[String]): Stream[Task, Nothing] =
     BlazeBuilder
       .bindHttp(port, ip)
       .mountService(HelloWorld.service)
