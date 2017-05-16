@@ -17,7 +17,7 @@ object BlazeExample extends StreamApp {
   val ip   : String           = "0.0.0.0"
   val pool : ExecutorService  = Executors.newCachedThreadPool()
 
-  override def main(args: List[String]): Stream[Task, Nothing] =
+  override def stream(args: List[String]): Stream[Task, Nothing] =
     BlazeBuilder
       .bindHttp(port, ip)
       .mountService(HelloWorld.service)
