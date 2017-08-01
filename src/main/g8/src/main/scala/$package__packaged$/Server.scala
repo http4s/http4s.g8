@@ -2,12 +2,12 @@ package $package$
 
 import java.util.concurrent.{ExecutorService, Executors}
 
+import fs2.Task
 import scala.util.Properties.envOrNone
-
-import scalaz.concurrent.Task
-
 import org.http4s.server.{Server, ServerApp}
 import org.http4s.server.blaze.BlazeBuilder
+
+import scala.concurrent.ExecutionContext
 
 
 object BlazeExample extends ServerApp {
@@ -20,6 +20,6 @@ object BlazeExample extends ServerApp {
     BlazeBuilder
       .bindHttp(port, ip)
       .mountService(HelloWorld.service)
-      .withServiceExecutor(pool)
+      .withExecutionContext(ExecutionContext.fromExecutorService(pool))
       .start
 }
