@@ -9,6 +9,7 @@ import fs2.{Task, Stream}
 import org.http4s.server.Server
 import org.http4s.util.StreamApp
 import org.http4s.server.blaze.BlazeBuilder
+import scala.concurrent.ExecutionContext
 
 
 object BlazeExample extends StreamApp {
