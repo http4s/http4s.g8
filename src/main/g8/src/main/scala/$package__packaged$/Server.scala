@@ -21,6 +21,6 @@ object BlazeExample extends StreamApp {
     BlazeBuilder
       .bindHttp(port, ip)
       .mountService(HelloWorld.service)
-      .withServiceExecutor(pool)
+      .withExecutionContext(ExecutionContext.fromExecutorService(pool))
       .serve
 }
