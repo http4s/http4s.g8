@@ -15,7 +15,7 @@ import scala.util.Properties.envOrNone
 object BlazeExample extends StreamApp[IO] {
   val route = HttpService[IO] {
     case GET -> Root / "hello" / name =>
-      Ok(Json.obj("message" -> Json.fromString(s"Hello, ${name}")))
+      Ok(Json.obj("message" -> Json.fromString(s"Hello, \${name}")))
   }
 
   def stream(args: List[String], requestShutdown: IO[Unit]) = {
