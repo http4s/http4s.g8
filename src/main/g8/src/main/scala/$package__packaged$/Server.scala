@@ -11,5 +11,4 @@ object BlazeExample extends StreamApp {
     BlazeBuilder
       .bindHttp(8080, "0.0.0.0")
       .mountService(HelloWorld.service)
-      .serve
 }
