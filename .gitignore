@@ -1,6 +1,23 @@
+
+### Scala IDE specific
+.cache-main
+.scala_dependencies
+.worksheet
+### Scala
+*.class
+*.log
+### SBT 
+dist/*
 target/
-boot/
 lib_managed/
 src_managed/
+project/boot/
 project/plugins/project/
-.idea/
+.history
+.cache
+.lib/
+### JetBrains 
+.idea
+*.iws
+/out/
+
