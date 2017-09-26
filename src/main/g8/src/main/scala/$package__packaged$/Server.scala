@@ -1,14 +1,13 @@
 package $package$
 
-import org.http4s.util.ProcessApp
+import fs2.{Task, Stream}
+import org.http4s.util.StreamApp
 import org.http4s.server.Server
 import org.http4s.server.blaze.BlazeBuilder
 import scala.concurrent.ExecutionContext
-import scalaz.concurrent.Task
-import scalaz.stream.Process
 
-object BlazeExample extends ProcessApp {
-  override def process(args: List[String]): Process[Task, Nothing] =
+object BlazeExample extends StreamApp {
+  override def stream(args: List[String]): Stream[Task, Nothing] =
     BlazeBuilder
       .bindHttp(8080, "0.0.0.0")
       .mountService(HelloWorld.service)
