@@ -1,4 +1,4 @@
-# http4s giter8 template [![Build Status](https://travis-ci.org/http4s/http4s.g8.svg?branch=master)](https://travis-ci.org/http4s/http4s.g8)
+# http4s giter8 template [![Build Status](https://travis-ci.org/http4s/http4s.g8.svg)](https://travis-ci.org/http4s/http4s.g8)
 
 Generate an http4s service on the blaze backend with Circe.
 
