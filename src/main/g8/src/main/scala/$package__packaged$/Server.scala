@@ -1,23 +1,16 @@
 package $package$
 
-import fs2.{Task, Stream}
-import java.util.concurrent.{ExecutorService, Executors}
-import org.http4s.util.StreamApp
+import org.http4s.util.ProcessApp
 import org.http4s.server.Server
 import org.http4s.server.blaze.BlazeBuilder
 import scala.concurrent.ExecutionContext
-import scala.util.Properties.envOrNone
+import scalaz.concurrent.Task
+import scalaz.stream.Process
 
-object BlazeExample extends StreamApp {
-
-  val port : Int              = envOrNone("HTTP_PORT") map (_.toInt) getOrElse 8080
-  val ip   : String           = "0.0.0.0"
-  val pool : ExecutorService  = Executors.newCachedThreadPool()
-
-  override def stream(args: List[String]): Stream[Task, Nothing] =
+object BlazeExample extends ProcessApp {
+  override def process(args: List[String]): Process[Task, Nothing] =
     BlazeBuilder
-      .bindHttp(port, ip)
+      .bindHttp(8080, "0.0.0.0")
       .mountService(HelloWorld.service)
-      .withExecutionContext(ExecutionContext.fromExecutorService(pool))
       .serve
 }
