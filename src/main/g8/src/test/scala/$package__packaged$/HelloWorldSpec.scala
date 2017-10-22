@@ -2,37 +2,28 @@ package $package$
 
 import org.http4s.dsl._
 import org.http4s.{Method, Request, Response, Status}
-import org.specs2.Specification
-import org.specs2.matcher.MatchResult
-import org.specs2.specification.core.SpecStructure
+import org.specs2._
 
 class HelloWorldSpec extends Specification {
-  def is: SpecStructure = {
-    s2"""
-  This is a specification to check the 'HelloWorldSpec' Endpoint
-
-  The 'HelloWorldSpec' endpoint should
-    returns 200  $e1
-    returns hello world $e2
-  """
+  "HelloWorld" should {
+    "return 200" in {
+      uriReturns200()
+    }
+    "return hellow world" in {
+      uriReturnsHelloWorld()
+    }
   }
 
-  def e1: MatchResult[Status] = uriReturns200()
-  def e2: MatchResult[String] = uriReturnsHelloWorld()
-
-
-  val retHelloWorld: Response = {
+  private[this] val retHelloWorld: Response = {
     val getHW = Request(Method.GET, uri("/hello/world"))
     val task = HelloWorld.service.run(getHW)
     task.unsafeRun.toOption.get
   }
 
-  def uriReturns200(): MatchResult[Status] = {
+  private[this] def uriReturns200(): MatchResult[Status] =
     retHelloWorld.status === Status.Ok
-  }
 
-  def uriReturnsHelloWorld(): MatchResult[String] = {
+  private[this] def uriReturnsHelloWorld(): MatchResult[String] =
     retHelloWorld.as[String].unsafeRun() === "Hello, world"
-  }
 }
 
