@@ -12,13 +12,13 @@ class HelloWorldSpec extends Specification {
   This is a specification to check the 'HelloWorldSpec' Endpoint
 
   The 'HelloWorldSpec' endpoint should
-    route returns 200  $e1
-    route returns hello world $e2
+    uri returns 200  $e1
+    uri returns hello world $e2
   """
   }
 
-  def e1: MatchResult[Status] = routeReturns200()
-  def e2: MatchResult[String] = routeReturnsHelloWorld()
+  def e1: MatchResult[Status] = uriReturns200()
+  def e2: MatchResult[String] = uriReturnsHelloWorld()
 
 
   val retHelloWorld: Response = {
@@ -27,11 +27,11 @@ class HelloWorldSpec extends Specification {
     task.unsafeRun.toOption.get
   }
 
-  def routeReturns200(): MatchResult[Status] = {
+  def uriReturns200(): MatchResult[Status] = {
     retHelloWorld.status === Status.Ok
   }
 
-  def routeReturnsHelloWorld(): MatchResult[String] = {
+  def uriReturnsHelloWorld(): MatchResult[String] = {
     retHelloWorld.as[String].unsafeRun() === "Hello, world"
   }
 }
