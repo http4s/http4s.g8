@@ -12,8 +12,8 @@ class HelloWorldSpec extends Specification {
   This is a specification to check the 'HelloWorldSpec' Endpoint
 
   The 'HelloWorldSpec' endpoint should
-    uri returns 200  $e1
-    uri returns hello world $e2
+    returns 200  $e1
+    returns hello world $e2
   """
   }
 
