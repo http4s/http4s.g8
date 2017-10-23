@@ -9,7 +9,7 @@ class HelloWorldSpec extends org.specs2.mutable.Specification {
     "return 200" >> {
       uriReturns200()
     }
-    "return hellow world" >> {
+    "return hello world" >> {
       uriReturnsHelloWorld()
     }
   }
