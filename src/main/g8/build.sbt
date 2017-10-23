@@ -8,12 +8,12 @@ val Specs2Version = "$specs2_version$"
 val ScalazVersion = "$scalaz_version$"
 
 libraryDependencies ++= Seq(
- "org.http4s"     %% "http4s-blaze-server"  % Http4sVersion,
- "org.http4s"     %% "http4s-circe"         % Http4sVersion,
- "org.http4s"     %% "http4s-dsl"           % Http4sVersion,
- "org.specs2"     %% "specs2-core"          % Specs2Version % "test",
- "org.specs2"     %% "specs2-mock"          % Specs2Version % "test",
- "org.scalaz"     %% "scalaz-core"          % ScalazVersion,
- "org.scalaz"     %% "scalaz-concurrent"    % ScalazVersion,
- "ch.qos.logback" %  "logback-classic"      % "1.2.1"
+  "org.http4s"     %% "http4s-blaze-server"  % Http4sVersion,
+  "org.http4s"     %% "http4s-circe"         % Http4sVersion,
+  "org.http4s"     %% "http4s-dsl"           % Http4sVersion,
+  "org.specs2"     %% "specs2-core"          % Specs2Version % "test",
+  "org.specs2"     %% "specs2-mock"          % Specs2Version % "test",
+  "org.scalaz"     %% "scalaz-core"          % ScalazVersion,
+  "org.scalaz"     %% "scalaz-concurrent"    % ScalazVersion,
+  "ch.qos.logback" %  "logback-classic"      % "1.2.1"
 )
