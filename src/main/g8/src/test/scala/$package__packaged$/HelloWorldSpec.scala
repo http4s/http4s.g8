@@ -1,4 +1,5 @@
 package $package$
+
 import org.http4s.dsl._
 import org.http4s.{Method, Request, Response, Status}
 import org.specs2.matcher.MatchResult
