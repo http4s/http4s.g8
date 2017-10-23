@@ -16,8 +16,8 @@ class HelloWorldSpec extends org.specs2.mutable.Specification {
 
   private[this] val retHelloWorld: Response = {
     val getHW = Request(Method.GET, uri("/hello/world"))
-    val task = HelloWorld.service.run(getHW)
-    task.unsafeRun.toOption.get
+    val task = HelloWorld.service.orNotFound(getHW)
+    task.unsafeRun
   }
 
   private[this] def uriReturns200(): MatchResult[Status] =
