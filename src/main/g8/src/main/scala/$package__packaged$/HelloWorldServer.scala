@@ -9,16 +9,15 @@ import org.http4s.server._
 import org.http4s.server.blaze.BlazeBuilder
 import org.http4s.util.StreamApp
 
-object BlazeExample extends StreamApp[IO] with Http4sDsl[IO] {
-  val route = HttpService[IO] {
+object HelloWorldServer extends StreamApp[IO] with Http4sDsl[IO] {
+  val service = HttpService[IO] {
     case GET -> Root / "hello" / name =>
       Ok(Json.obj("message" -> Json.fromString(s"Hello, \${name}")))
   }
 
-  def stream(args: List[String], requestShutdown: IO[Unit]) = {
+  def stream(args: List[String], requestShutdown: IO[Unit]) =
     BlazeBuilder[IO]
       .bindHttp(8080, "0.0.0.0")
-      .mountService(route,"/")
+      .mountService(service, "/")
       .serve
-  }
 }
