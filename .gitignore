@@ -11,6 +11,7 @@ dist/*
 target/
 lib_managed/
 src_managed/
+<<<<<<< Updated upstream
 project/boot/
 project/plugins/project/
 .history
@@ -21,3 +22,7 @@ project/plugins/project/
 *.iws
 /out/
 
+=======
+project/plugins/project/
+.idea/
+>>>>>>> Stashed changes
