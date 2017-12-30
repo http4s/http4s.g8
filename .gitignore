@@ -6,23 +6,17 @@
 ### Scala
 *.class
 *.log
-### SBT 
+### SBT
 dist/*
 target/
 lib_managed/
 src_managed/
-<<<<<<< Updated upstream
 project/boot/
 project/plugins/project/
 .history
 .cache
 .lib/
-### JetBrains 
+### JetBrains
 .idea
 *.iws
 /out/
-
-=======
-project/plugins/project/
-.idea/
->>>>>>> Stashed changes
