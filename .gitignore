@@ -6,7 +6,7 @@
 ### Scala
 *.class
 *.log
-### SBT 
+### SBT
 dist/*
 target/
 lib_managed/
@@ -16,8 +16,7 @@ project/plugins/project/
 .history
 .cache
 .lib/
-### JetBrains 
+### JetBrains
 .idea
 *.iws
 /out/
-
