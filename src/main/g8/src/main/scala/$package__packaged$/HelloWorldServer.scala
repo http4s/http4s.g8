@@ -1,23 +1,24 @@
 package $package$
 
-import cats.effect.IO
+import cats.effect.{Effect, IO}
 import fs2.StreamApp
-import io.circe._
-import org.http4s._
-import org.http4s.circe._
-import org.http4s.dsl.Http4sDsl
 import org.http4s.server.blaze.BlazeBuilder
-import scala.concurrent.ExecutionContext.Implicits.global
 
-object HelloWorldServer extends StreamApp[IO] with Http4sDsl[IO] {
-  val service = HttpService[IO] {
-    case GET -> Root / "hello" / name =>
-      Ok(Json.obj("message" -> Json.fromString(s"Hello, \${name}")))
-  }
+import scala.concurrent.ExecutionContext
 
-  def stream(args: List[String], requestShutdown: IO[Unit]) =
-    BlazeBuilder[IO]
+object HelloWorldServer extends StreamApp[IO] {
+  import scala.concurrent.ExecutionContext.Implicits.global
+
+  def stream(args: List[String], requestShutdown: IO[Unit]) = ServerStream.stream[IO]
+}
+
+object ServerStream {
+
+  def helloWorldService[F[_]: Effect] = new HelloWorldService[F].service
+
+  def stream[F[_]: Effect](implicit ec: ExecutionContext) =
+    BlazeBuilder[F]
       .bindHttp(8080, "0.0.0.0")
-      .mountService(service, "/")
+      .mountService(helloWorldService, "/")
       .serve
 }
