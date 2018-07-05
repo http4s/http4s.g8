@@ -1,22 +1,18 @@
 package $package$
 
-import cats.effect.{Effect, IO}
-import fs2.StreamApp
+import cats.effect.{ConcurrentEffect, Effect, ExitCode, IO, IOApp}
+import cats.implicits._
 import org.http4s.server.blaze.BlazeBuilder
 
-import scala.concurrent.ExecutionContext
-
-object HelloWorldServer extends StreamApp[IO] {
-  import scala.concurrent.ExecutionContext.Implicits.global
-
-  def stream(args: List[String], requestShutdown: IO[Unit]) = ServerStream.stream[IO]
+object HelloWorldServer extends IOApp {
+  def run(args: List[String]) =
+    ServerStream.stream[IO].compile.drain.as(ExitCode.Success)
 }
 
 object ServerStream {
-
   def helloWorldService[F[_]: Effect] = new HelloWorldService[F].service
 
-  def stream[F[_]: Effect](implicit ec: ExecutionContext) =
+  def stream[F[_]: ConcurrentEffect] =
     BlazeBuilder[F]
       .bindHttp(8080, "0.0.0.0")
       .mountService(helloWorldService, "/")
