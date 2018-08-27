@@ -10,11 +10,11 @@ object HelloWorldServer extends IOApp {
 }
 
 object ServerStream {
-  def helloWorldService[F[_]: Effect] = new HelloWorldService[F].routes
+  def helloWorldRoutes[F[_]: Effect] = new HelloWorldRoutes[F].routes
 
   def stream[F[_]: ConcurrentEffect] =
     BlazeBuilder[F]
       .bindHttp(8080, "0.0.0.0")
-      .mountService(helloWorldService, "/")
+      .mountService(helloWorldRoutes, "/")
       .serve
 }
