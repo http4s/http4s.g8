@@ -2,6 +2,9 @@ val Http4sVersion = "$http4s_version$"
 val Specs2Version = "$specs2_version$"
 val LogbackVersion = "$logback_version$"
 
+// Only necessary for Http4s SNAPSHOT releases
+resolvers += Resolver.sonatypeRepo("snapshots")
+
 lazy val root = (project in file("."))
   .settings(
     organization := "$organization$",
