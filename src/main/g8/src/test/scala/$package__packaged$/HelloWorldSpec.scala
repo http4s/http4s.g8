@@ -18,7 +18,8 @@ class HelloWorldSpec extends org.specs2.mutable.Specification {
 
   private[this] val retHelloWorld: Response[IO] = {
     val getHW = Request[IO](Method.GET, Uri.uri("/hello/world"))
-    HelloWorldRoutes.routes[IO].orNotFound(getHW).unsafeRunSync()
+    val helloWorld = HelloWorldAlg.impl[IO]
+    Edge.helloWorldRoutes(helloWorld).orNotFound(getHW).unsafeRunSync()
   }
 
   private[this] def uriReturns200(): MatchResult[Status] =
