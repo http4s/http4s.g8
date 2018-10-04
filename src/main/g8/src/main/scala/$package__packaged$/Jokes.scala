@@ -16,11 +16,9 @@ trait Jokes[F[_]]{
 object Jokes {
   final case class Joke(joke: String) extends AnyVal
   object Joke {
-    // We can make this easier if we use circe-generic
     implicit val jokeDecoder: Decoder[Joke] = deriveDecoder[Joke]
     implicit def jokeEntityDecoder[F[_]: Sync]: EntityDecoder[F, Joke] = 
       jsonOf
-
     implicit val jokeEncoder: Encoder[Joke] = deriveEncoder[Joke]
     implicit def jokeEntityEncoder[F[_]: Applicative]: EntityEncoder[F, Joke] =
       jsonEncoderOf

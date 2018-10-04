@@ -7,7 +7,7 @@ import org.http4s.circe._
 import org.http4s.dsl.Http4sDsl
 import org.http4s.HttpRoutes
 
-object Routes {
+object $name;format="Camel"$Routes {
 
   def jokeRoutes[F[_]: Sync](J: Jokes[F]): HttpRoutes[F] = {
     val dsl = new Http4sDsl[F]{}
