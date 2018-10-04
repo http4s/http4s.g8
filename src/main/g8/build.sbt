@@ -1,9 +1,7 @@
 val Http4sVersion = "$http4s_version$"
+val CirceVersion = "$circe_version$"
 val Specs2Version = "$specs2_version$"
 val LogbackVersion = "$logback_version$"
-
-// Only necessary for Http4s SNAPSHOT releases
-resolvers += Resolver.sonatypeRepo("snapshots")
 
 lazy val root = (project in file("."))
   .settings(
@@ -16,6 +14,7 @@ lazy val root = (project in file("."))
       "org.http4s"      %% "http4s-blaze-client" % Http4sVersion,
       "org.http4s"      %% "http4s-circe"        % Http4sVersion,
       "org.http4s"      %% "http4s-dsl"          % Http4sVersion,
+      "io.circe"        %% "circe-generic"       % CirceVersion,
       "org.specs2"      %% "specs2-core"         % Specs2Version % "test",
       "ch.qos.logback"  %  "logback-classic"     % LogbackVersion
     )

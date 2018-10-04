@@ -7,27 +7,27 @@ import org.http4s.circe._
 import org.http4s.dsl.Http4sDsl
 import org.http4s.HttpRoutes
 
-object Edge {
+object Routes {
 
-  def jokeRoutes[F[_]: Sync](J: JokeAlg[F]): HttpRoutes[F] = {
+  def jokeRoutes[F[_]: Sync](J: Jokes[F]): HttpRoutes[F] = {
     val dsl = new Http4sDsl[F]{}
     import dsl._
     HttpRoutes.of[F] {
       case GET -> Root / "joke" =>
         for {
-          joke <- J.getJoke
+          joke <- J.get
           resp <- Ok(joke)
         } yield resp
     }
   }
 
-  def helloWorldRoutes[F[_]: Sync](H: HelloWorldAlg[F]): HttpRoutes[F] = {
+  def helloWorldRoutes[F[_]: Sync](H: HelloWorld[F]): HttpRoutes[F] = {
     val dsl = new Http4sDsl[F]{}
     import dsl._
     HttpRoutes.of[F] {
       case GET -> Root / "hello" / name =>
         for {
-          greeting <- H.hello(HelloWorldAlg.Name(name))
+          greeting <- H.hello(HelloWorld.Name(name))
           resp <- Ok(greeting)
         } yield resp
     }

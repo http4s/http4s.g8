@@ -6,11 +6,13 @@ import io.circe.{Encoder, Decoder, Json}
 import org.http4s.EntityEncoder
 import org.http4s.circe._
 
-trait HelloWorldAlg[F[_]]{
-  def hello(n: HelloWorldAlg.Name): F[HelloWorldAlg.Greeting]
+trait HelloWorld[F[_]]{
+  def hello(n: HelloWorld.Name): F[HelloWorld.Greeting]
 }
 
-object HelloWorldAlg {
+object HelloWorld {
+  implicit def apply[F[_]](implicit ev: HelloWorld[F]): HelloWorld[F] = ev
+
   final case class Name(name: String) extends AnyVal
   /**
     * More Generally You will want to decouple your edge representations from
@@ -28,8 +30,8 @@ object HelloWorldAlg {
       jsonEncoderOf[F, Greeting]
   }
 
-  def impl[F[_]: Applicative]: HelloWorldAlg[F] = new HelloWorldAlg[F]{
-    def hello(n: HelloWorldAlg.Name): F[HelloWorldAlg.Greeting] = 
+  def impl[F[_]: Applicative]: HelloWorld[F] = new HelloWorld[F]{
+    def hello(n: HelloWorld.Name): F[HelloWorld.Greeting] = 
         Greeting("Hello, " + n.name).pure[F]
   }
 }

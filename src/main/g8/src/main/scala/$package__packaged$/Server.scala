@@ -13,19 +13,19 @@ import org.http4s.server.middleware.Logger
 
 object Server {
 
-  def stream[F[_]: ConcurrentEffect](implicit T: Timer[F], C: ContextShift[F]): Stream[F, ExitCode] =
+  def stream[F[_]: ConcurrentEffect](implicit T: Timer[F], C: ContextShift[F]): Stream[F, Nothing] = {
     for {
       client <- BlazeClientBuilder[F](global).stream
-      helloWorldAlg = HelloWorldAlg.impl[F]
-      jokeAlg = JokeAlg.impl[F](client)
+      helloWorldAlg = HelloWorld.impl[F]
+      jokeAlg = Jokes.impl[F](client)
 
       // Combine Service Routes into an HttpApp
       // Can also be done via a Router if you
       // want to extract a segments not checked
       // in the underlying routes.
       httpApp = (
-        Edge.helloWorldRoutes[F](helloWorldAlg) <+>
-        Edge.jokeRoutes[F](jokeAlg)
+        Routes.helloWorldRoutes[F](helloWorldAlg) <+>
+        Routes.jokeRoutes[F](jokeAlg)
       ).orNotFound
 
       // With Middlewares in place
@@ -37,4 +37,5 @@ object Server {
         .withHttpApp(finalHttpApp)
         .serve
     } yield exitCode
+  }.drain
 }
