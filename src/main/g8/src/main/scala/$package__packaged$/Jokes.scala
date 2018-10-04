@@ -16,6 +16,8 @@ trait Jokes[F[_]]{
 }
 
 object Jokes {
+  def apply[F[_]](implicit ev: Jokes[F]): Jokes[F] = ev
+  
   final case class Joke(joke: String) extends AnyVal
   object Joke {
     implicit val jokeDecoder: Decoder[Joke] = deriveDecoder[Joke]
