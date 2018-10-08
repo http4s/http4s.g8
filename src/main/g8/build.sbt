@@ -1,4 +1,5 @@
 val Http4sVersion = "$http4s_version$"
+val CirceVersion = "$circe_version$"
 val Specs2Version = "$specs2_version$"
 val LogbackVersion = "$logback_version$"
 
@@ -11,9 +12,11 @@ lazy val root = (project in file("."))
     scalacOptions ++= Seq("-Ypartial-unification"),
     libraryDependencies ++= Seq(
       "org.http4s"      %% "http4s-blaze-server" % Http4sVersion,
+      "org.http4s"      %% "http4s-blaze-client" % Http4sVersion,
       "org.http4s"      %% "http4s-circe"        % Http4sVersion,
       "org.http4s"      %% "http4s-dsl"          % Http4sVersion,
-      "org.specs2"     %% "specs2-core"          % Specs2Version % "test",
+      "io.circe"        %% "circe-generic"       % CirceVersion,
+      "org.specs2"      %% "specs2-core"         % Specs2Version % "test",
       "ch.qos.logback"  %  "logback-classic"     % LogbackVersion
     ),
     addCompilerPlugin("org.spire-math" %% "kind-projector"     % "0.9.6"),
