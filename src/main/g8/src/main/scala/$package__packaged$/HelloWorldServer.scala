@@ -1,6 +1,6 @@
 package $package$
 
-import cats.effect.{ConcurrentEffect, Effect, ExitCode, IO, IOApp}
+import cats.effect._
 import cats.implicits._
 import org.http4s.HttpRoutes
 import org.http4s.server.blaze.BlazeBuilder
@@ -13,7 +13,7 @@ object HelloWorldServer extends IOApp {
 object ServerStream {
   def helloWorldRoutes[F[_]: Effect]: HttpRoutes[F] = new HelloWorldRoutes[F].routes
 
-  def stream[F[_]: ConcurrentEffect]: fs2.Stream[F, ExitCode]=
+  def stream[F[_]: ConcurrentEffect: Timer]: fs2.Stream[F, ExitCode]=
     BlazeBuilder[F]
       .bindHttp(8080, "0.0.0.0")
       .mountService(helloWorldRoutes, "/")
