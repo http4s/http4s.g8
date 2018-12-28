@@ -3,6 +3,7 @@ package $package$
 import cats.effect._
 import cats.implicits._
 import org.http4s.HttpRoutes
+import org.http4s.server.Router
 import org.http4s.server.blaze.BlazeServerBuilder
 import org.http4s.syntax.kleisli._
 
