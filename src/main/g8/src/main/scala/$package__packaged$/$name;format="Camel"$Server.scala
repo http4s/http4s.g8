@@ -29,7 +29,7 @@ object $name;format="Camel"$Server {
       ).orNotFound
 
       // With Middlewares in place
-      finalHttpApp = Logger(true, true)(httpApp)
+      finalHttpApp = Logger.httpApp(true, true)(httpApp)
 
 
       exitCode <- BlazeServerBuilder[F]
