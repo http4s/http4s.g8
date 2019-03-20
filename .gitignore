@@ -20,3 +20,7 @@ project/plugins/project/
 .idea
 *.iws
 /out/
+
+## VSCode
+.metals
+.bloop
