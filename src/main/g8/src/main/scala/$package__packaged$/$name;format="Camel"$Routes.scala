@@ -32,5 +32,4 @@ object $name;format="Camel"$Routes {
         } yield resp
     }
   }
-
 }

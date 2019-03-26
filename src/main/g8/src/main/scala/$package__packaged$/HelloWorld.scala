@@ -15,7 +15,7 @@ object HelloWorld {
 
   final case class Name(name: String) extends AnyVal
   /**
-    * More Generally You will want to decouple your edge representations from
+    * More generally you will want to decouple your edge representations from
     * your internal data structures, however this shows how you can
     * create encoders for your data.
     **/
@@ -26,12 +26,12 @@ object HelloWorld {
         ("message", Json.fromString(a.greeting)),
       )
     }
-    implicit def greetingEntityEncoder[F[_]: Applicative]: EntityEncoder[F, Greeting] = 
+    implicit def greetingEntityEncoder[F[_]: Applicative]: EntityEncoder[F, Greeting] =
       jsonEncoderOf[F, Greeting]
   }
 
   def impl[F[_]: Applicative]: HelloWorld[F] = new HelloWorld[F]{
-    def hello(n: HelloWorld.Name): F[HelloWorld.Greeting] = 
+    def hello(n: HelloWorld.Name): F[HelloWorld.Greeting] =
         Greeting("Hello, " + n.name).pure[F]
   }
 }
