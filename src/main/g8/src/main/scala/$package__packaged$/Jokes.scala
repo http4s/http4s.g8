@@ -17,11 +17,11 @@ trait Jokes[F[_]]{
 
 object Jokes {
   def apply[F[_]](implicit ev: Jokes[F]): Jokes[F] = ev
-  
+
   final case class Joke(joke: String) extends AnyVal
   object Joke {
     implicit val jokeDecoder: Decoder[Joke] = deriveDecoder[Joke]
-    implicit def jokeEntityDecoder[F[_]: Sync]: EntityDecoder[F, Joke] = 
+    implicit def jokeEntityDecoder[F[_]: Sync]: EntityDecoder[F, Joke] =
       jsonOf
     implicit val jokeEncoder: Encoder[Joke] = deriveEncoder[Joke]
     implicit def jokeEntityEncoder[F[_]: Applicative]: EntityEncoder[F, Joke] =
@@ -38,5 +38,4 @@ object Jokes {
         .adaptError{ case t => JokeError(t)} // Prevent Client Json Decoding Failure Leaking
     }
   }
-
 }
