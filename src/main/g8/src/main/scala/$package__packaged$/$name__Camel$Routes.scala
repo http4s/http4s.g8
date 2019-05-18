@@ -2,10 +2,8 @@ package $package$
 
 import cats.effect.Sync
 import cats.implicits._
-import io.circe.Json
-import org.http4s.circe._
-import org.http4s.dsl.Http4sDsl
 import org.http4s.HttpRoutes
+import org.http4s.dsl.Http4sDsl
 
 object $name;format="Camel"$Routes {
 
