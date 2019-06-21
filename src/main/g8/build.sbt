@@ -9,7 +9,6 @@ lazy val root = (project in file("."))
     name := "$name;format="norm"$",
     version := "0.0.1-SNAPSHOT",
     scalaVersion := "$scala_version$",
-    scalacOptions ++= Seq("-Ypartial-unification"),
     libraryDependencies ++= Seq(
       "org.http4s"      %% "http4s-blaze-server" % Http4sVersion,
       "org.http4s"      %% "http4s-blaze-client" % Http4sVersion,
@@ -19,8 +18,8 @@ lazy val root = (project in file("."))
       "org.specs2"      %% "specs2-core"         % Specs2Version % "test",
       "ch.qos.logback"  %  "logback-classic"     % LogbackVersion
     ),
-    addCompilerPlugin("org.spire-math" %% "kind-projector"     % "0.9.6"),
-    addCompilerPlugin("com.olegpy"     %% "better-monadic-for" % "0.2.4")
+    addCompilerPlugin("org.typelevel"  %% "kind-projector"     % "0.10.3"),
+    addCompilerPlugin("com.olegpy"     %% "better-monadic-for" % "0.3.0")
   )
 
 scalacOptions ++= Seq(
@@ -29,6 +28,5 @@ scalacOptions ++= Seq(
   "-language:higherKinds",
   "-language:postfixOps",
   "-feature",
-  "-Ypartial-unification",
   "-Xfatal-warnings",
 )
