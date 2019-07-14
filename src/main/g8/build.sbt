@@ -18,8 +18,8 @@ lazy val root = (project in file("."))
       "org.specs2"      %% "specs2-core"         % Specs2Version % "test",
       "ch.qos.logback"  %  "logback-classic"     % LogbackVersion
     ),
-    addCompilerPlugin("org.typelevel"  %% "kind-projector"     % "0.10.3"),
-    addCompilerPlugin("com.olegpy"     %% "better-monadic-for" % "0.3.0")
+    addCompilerPlugin("org.typelevel" %% "kind-projector"     % "0.10.3"),
+    addCompilerPlugin("com.olegpy"    %% "better-monadic-for" % "0.3.0")
   )
 
 scalacOptions ++= Seq(
