@@ -6,14 +6,14 @@ env:
 jobs:
   validate:
     name: Scala ${{ matrix.scala }}, Java ${{ matrix.java }}
-    runs-on: ubuntu-latest
+    runs-on: ${{matrix.systems}} 
     strategy:
       fail-fast: false
       matrix:
         java: [adopt@1.8, adopt@1.11, adopt@1.14,graalvm@]
         scala: [2.12.11, 2.13.1]
         #TODO: windows-latest likely requires another [job](https://github.com/olafurpg/setup-scala)
-        systems: [ubuntu-latest, macos-latest]
+        systems: [ubuntu-latest, macos-latest, windows-latest]
     env:
       SCALA_VERSION: ${{ matrix.scala }}
     steps:
