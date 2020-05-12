@@ -33,8 +33,8 @@ jobs:
         with:
           path: ~/.sbt
           key: sbt-${{ hashFiles('**/build.sbt') }}
-        - name: g8Test
-          run: sbt ++$SCALA_VERSION g8Test 
+      - name: g8Test
+        run: sbt ++$SCALA_VERSION g8Test 
           #- name: Check formatting
           #  if: startsWith(matrix.scala, '2.12.') && (matrix.java == 'adopt@1.8')
           #  run: sbt ++$SCALA_VERSION scalafmtCheckAll
