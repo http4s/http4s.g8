@@ -34,9 +34,9 @@ jobs:
           path: ~/.sbt
           key: sbt-${{ hashFiles('**/build.sbt') }}
       - name: g8Test
-        if: ! startsWith(matrix.scala,'2.13.1')
+        if:  startsWith(matrix.scala,'2.12.11')
         run: sbt ++$SCALA_VERSION g8Test 
 
       - name: g8Test2.13
         if: startsWith(matrix.scala,'2.13.1')
-        run: sbt ++$SCALA_VERSION g8Test
+        run: sbt g8Test
