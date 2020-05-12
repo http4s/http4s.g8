@@ -1,0 +1,40 @@
+name: CI
+on: [push, pull_request]
+env:
+  CI: true
+  SCALA_VERSION: 2.12.11
+jobs:
+  validate:
+    name: Scala ${{ matrix.scala }}, Java ${{ matrix.java }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        java: [adopt@1.8, adopt@1.11, adopt@1.14,graalvm@]
+        scala: [2.12.11, 2.13.1]
+        #TODO: windows-latest likely requires another [job](https://github.com/olafurpg/setup-scala)
+        systems: [ubuntu-latest, macos-latest]
+    env:
+      SCALA_VERSION: ${{ matrix.scala }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: olafurpg/setup-scala@v7
+        with:
+          java-version: ${{ matrix.java }}
+      # TODO: should we remove?
+      - name: Cache Coursier
+        uses: actions/cache@v1
+        with:
+          path: ~/.cache/coursier
+          key: sbt-coursier-cache
+      # TODO: should we remove?     
+      - name: Cache SBT
+        uses: actions/cache@v1
+        with:
+          path: ~/.sbt
+          key: sbt-${{ hashFiles('**/build.sbt') }}
+        - name: g8Test
+          run: sbt ++$SCALA_VERSION g8Test 
+          #- name: Check formatting
+          #  if: startsWith(matrix.scala, '2.12.') && (matrix.java == 'adopt@1.8')
+          #  run: sbt ++$SCALA_VERSION scalafmtCheckAll
