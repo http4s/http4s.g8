@@ -2,7 +2,7 @@ name: CI
 on: [push, pull_request]
 env:
   CI: true
-  SCALA_VERSION: 2.12.11
+  SCALA_VERSION: 2.13.1
 jobs:
   validate:
     name: Scala ${{ matrix.scala }}, Java ${{ matrix.java }}
