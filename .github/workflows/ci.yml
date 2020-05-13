@@ -46,5 +46,6 @@ jobs:
           sbt g8Test
           cd target/sbt-test/http4s-g8/scripted
           sbt assembly
+          gu install native-image
           cat native-image-readme.md | grep 'native-image  -H*' | sh
         
