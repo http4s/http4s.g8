@@ -49,4 +49,4 @@ jobs:
           gu install native-image
           cat native-image-readme.md | grep 'native-image  -H*' | sh
           doalarm () { perl -e 'alarm shift; exec @ARGV' "$@"; }
-          doalarm 30 ./quickstartBinaryImage 
+          doalarm 30 ./quickstartBinaryImage && exit 0
