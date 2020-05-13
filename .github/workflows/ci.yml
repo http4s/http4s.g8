@@ -10,10 +10,13 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        java: [adopt@1.8, adopt@1.11, adopt@1.14,graalvm@]
-        scala: [2.12.11, 2.13.1]
+        #adopt@1.8, adopt@1.11, adopt@1.14,
+        java: [graalvm@]
+        #2.12.11,
+        scala: [2.13.1]
         #TODO: windows-latest likely requires another [job](https://github.com/olafurpg/setup-scala)
-        systems: [ubuntu-latest, macos-latest, windows-latest]
+        #ubuntu-latest, windows-latest   
+        systems: [macos-latest]
     env:
       SCALA_VERSION: ${{ matrix.scala }}
     steps:
@@ -39,4 +42,9 @@ jobs:
 
       - name: g8Test2.13
         if: startsWith(matrix.scala,'2.13.1')
-        run: sbt g8Test
+        run: | 
+          sbt g8Test
+          cd target/sbt-test/http4s-g8/scripted
+          sbt assembly
+          cat native-image-readme.md | grep 'native-image  -H*' | sh
+        
