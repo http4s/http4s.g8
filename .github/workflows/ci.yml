@@ -24,13 +24,11 @@ jobs:
       - uses: olafurpg/setup-scala@v7
         with:
           java-version: ${{ matrix.java }}
-      # TODO: should we remove?
       - name: Cache Coursier
         uses: actions/cache@v1
         with:
           path: ~/.cache/coursier
           key: sbt-coursier-cache
-      # TODO: should we remove?     
       - name: Cache SBT
         uses: actions/cache@v1
         with:
