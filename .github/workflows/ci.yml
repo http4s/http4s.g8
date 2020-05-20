@@ -16,7 +16,7 @@ jobs:
         scala: [2.13.1]
         #TODO: windows-latest likely requires another [job](https://github.com/olafurpg/setup-scala)
         #ubuntu-latest, windows-latest   
-        systems: [macos-latest]
+        systems: [ubuntu-latest,macos-latest]
     env:
       SCALA_VERSION: ${{ matrix.scala }}
     steps:
@@ -48,9 +48,3 @@ jobs:
           sbt assembly
           gu install native-image
           cat native-image-readme.md | grep 'native-image  -H*' | sh
-          doalarm () { perl -e 'alarm shift; exec @ARGV' "$@"; }
-          doalarm 30 ./quickstartBinaryImage 
-          if (( $? -eq 142 )); then exit 0 fi
-          else
-            exit 99
-          fi
