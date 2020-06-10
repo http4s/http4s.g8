@@ -1,0 +1,48 @@
+name: CI
+on: [push, pull_request]
+env:
+  CI: true
+  SCALA_VERSION: 2.13.1
+jobs:
+  validate:
+    name: Scala ${{ matrix.scala }}, Java ${{ matrix.java }}
+    runs-on: ${{matrix.systems}} 
+    strategy:
+      fail-fast: false
+      matrix:
+        #adopt@1.8, adopt@1.11, adopt@1.14,
+        java: [graalvm@]
+        #2.12.11,
+        scala: [2.13.1]
+        #TODO: windows-latest likely requires another [job](https://github.com/olafurpg/setup-scala)
+        #ubuntu-latest, windows-latest   
+        systems: [ubuntu-latest,macos-latest]
+    env:
+      SCALA_VERSION: ${{ matrix.scala }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: olafurpg/setup-scala@v7
+        with:
+          java-version: ${{ matrix.java }}
+      - name: Cache Coursier
+        uses: actions/cache@v1
+        with:
+          path: ~/.cache/coursier
+          key: sbt-coursier-cache
+      - name: Cache SBT
+        uses: actions/cache@v1
+        with:
+          path: ~/.sbt
+          key: sbt-${{ hashFiles('**/build.sbt') }}
+      - name: g8Test
+        if:  startsWith(matrix.scala,'2.12.11')
+        run: sbt ++$SCALA_VERSION g8Test 
+
+      - name: g8Test2.13
+        if: startsWith(matrix.scala,'2.13.1')
+        run: | 
+          sbt g8Test
+          cd target/sbt-test/http4s-g8/scripted
+          sbt assembly
+          gu install native-image
+          cat native-image-readme.md | grep 'native-image  -H*' | sh
