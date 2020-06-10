@@ -11,7 +11,7 @@ jobs:
       fail-fast: false
       matrix:
         #adopt@1.8, adopt@1.11, adopt@1.14,
-        java: [graalvm@]
+        java: [graalvm-ce-java11@]
         #2.12.11,
         scala: [2.13.1]
         #TODO: windows-latest likely requires another [job](https://github.com/olafurpg/setup-scala)
