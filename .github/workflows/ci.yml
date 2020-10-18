@@ -2,7 +2,7 @@ name: CI
 on: [push, pull_request]
 env:
   CI: true
-  SCALA_VERSION: 2.13.1
+  SCALA_VERSION: 2.13.3
 jobs:
   validate:
     name: Scala ${{ matrix.scala }}, Java ${{ matrix.java }}
@@ -13,7 +13,7 @@ jobs:
         #adopt@1.8, adopt@1.11, adopt@1.14,
         java: [graalvm-ce-java11@]
         #2.12.11,
-        scala: [2.13.1]
+        scala: [2.13.3]
         #TODO: windows-latest likely requires another [job](https://github.com/olafurpg/setup-scala)
         #ubuntu-latest, windows-latest   
         systems: [ubuntu-latest,macos-latest]
@@ -39,7 +39,7 @@ jobs:
         run: sbt ++$SCALA_VERSION g8Test 
 
       - name: g8Test2.13
-        if: startsWith(matrix.scala,'2.13.1')
+        if: startsWith(matrix.scala,'2.13.3')
         run: | 
           sbt g8Test
           cd target/sbt-test/http4s-g8/scripted
