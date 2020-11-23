@@ -1,6 +1,6 @@
 package $package$
 
-import cats.effect.{ConcurrentEffect, ContextShift, Timer}
+import cats.effect.{ConcurrentEffect, Timer}
 import cats.implicits._
 import fs2.Stream
 import org.http4s.client.blaze.BlazeClientBuilder
@@ -11,7 +11,7 @@ import scala.concurrent.ExecutionContext.global
 
 object $name;format="Camel"$Server {
 
-  def stream[F[_]: ConcurrentEffect](implicit T: Timer[F], C: ContextShift[F]): Stream[F, Nothing] = {
+  def stream[F[_]: ConcurrentEffect](implicit T: Timer[F]): Stream[F, Nothing] = {
     for {
       client <- BlazeClientBuilder[F](global).stream
       helloWorldAlg = HelloWorld.impl[F]
