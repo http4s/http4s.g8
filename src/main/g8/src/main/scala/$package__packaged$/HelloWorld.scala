@@ -26,7 +26,7 @@ object HelloWorld {
         ("message", Json.fromString(a.greeting)),
       )
     }
-    implicit def greetingEntityEncoder[F[_]: Applicative]: EntityEncoder[F, Greeting] =
+    implicit def greetingEntityEncoder[F[_]]: EntityEncoder[F, Greeting] =
       jsonEncoderOf[F, Greeting]
   }
 
