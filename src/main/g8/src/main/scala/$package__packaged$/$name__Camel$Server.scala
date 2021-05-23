@@ -1,16 +1,17 @@
 package $package$
 
-import cats.effect.{Async, Concurrent, ContextShift, Resource, Timer}
+import cats.effect.{Async, Resource}
 import cats.syntax.all._
+import com.comcast.ip4s._
 import fs2.Stream
 import org.http4s.ember.client.EmberClientBuilder
-import org.http4s.implicits._
 import org.http4s.ember.server.EmberServerBuilder
+import org.http4s.implicits._
 import org.http4s.server.middleware.Logger
 
 object $name;format="Camel"$Server {
 
-  def stream[F[_]: Concurrent: ContextShift: Timer]: Stream[F, Nothing] = {
+  def stream[F[_]: Async]: Stream[F, Nothing] = {
     for {
       client <- Stream.resource(EmberClientBuilder.default[F].build)
       helloWorldAlg = HelloWorld.impl[F]
@@ -30,8 +31,8 @@ object $name;format="Camel"$Server {
 
       exitCode <- Stream.resource(
         EmberServerBuilder.default[F]
-          .withHost("0.0.0.0")
-          .withPort(8080)
+          .withHost(ipv4"0.0.0.0")
+          .withPort(port"8080")
           .withHttpApp(finalHttpApp)
           .build >>
         Resource.eval(Async[F].never)
