@@ -14,7 +14,7 @@ ThisBuild / githubWorkflowBuild := Seq(
       "gu install native-image",
       "cat native-image-readme.md | grep 'native-image  -H*' | sh"
     ),
-    cond = Some("startsWith(matrix.java, 'graalvm-')"),
+    cond = Some("startsWith(matrix.java, 'graalvm-') && false"),
     name = Some("Build native assembly")
   )
 )
