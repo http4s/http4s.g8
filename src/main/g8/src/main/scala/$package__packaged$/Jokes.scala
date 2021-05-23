@@ -1,6 +1,5 @@
 package $package$
 
-import cats.Applicative
 import cats.effect.Sync
 import cats.implicits._
 import io.circe.{Encoder, Decoder}
@@ -25,7 +24,7 @@ object Jokes {
     implicit def jokeEntityDecoder[F[_]: Sync]: EntityDecoder[F, Joke] =
       jsonOf
     implicit val jokeEncoder: Encoder[Joke] = deriveEncoder[Joke]
-    implicit def jokeEntityEncoder[F[_]: Applicative]: EntityEncoder[F, Joke] =
+    implicit def jokeEntityEncoder[F[_]]: EntityEncoder[F, Joke] =
       jsonEncoderOf
   }
 
