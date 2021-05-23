@@ -1,19 +1,19 @@
 package $package$
 
-import cats.effect.{ConcurrentEffect, Timer}
-import cats.implicits._
+import cats.effect.{Async, Resource}
+import cats.syntax.all._
+import com.comcast.ip4s._
 import fs2.Stream
-import org.http4s.client.blaze.BlazeClientBuilder
+import org.http4s.ember.client.EmberClientBuilder
+import org.http4s.ember.server.EmberServerBuilder
 import org.http4s.implicits._
-import org.http4s.server.blaze.BlazeServerBuilder
 import org.http4s.server.middleware.Logger
-import scala.concurrent.ExecutionContext.global
 
 object $name;format="Camel"$Server {
 
-  def stream[F[_]: ConcurrentEffect](implicit T: Timer[F]): Stream[F, Nothing] = {
+  def stream[F[_]: Async]: Stream[F, Nothing] = {
     for {
-      client <- BlazeClientBuilder[F](global).stream
+      client <- Stream.resource(EmberClientBuilder.default[F].build)
       helloWorldAlg = HelloWorld.impl[F]
       jokeAlg = Jokes.impl[F](client)
 
@@ -29,10 +29,14 @@ object $name;format="Camel"$Server {
       // With Middlewares in place
       finalHttpApp = Logger.httpApp(true, true)(httpApp)
 
-      exitCode <- BlazeServerBuilder[F](global)
-        .bindHttp(8080, "0.0.0.0")
-        .withHttpApp(finalHttpApp)
-        .serve
+      exitCode <- Stream.resource(
+        EmberServerBuilder.default[F]
+          .withHost(ipv4"0.0.0.0")
+          .withPort(port"8080")
+          .withHttpApp(finalHttpApp)
+          .build >>
+        Resource.eval(Async[F].never)
+      )
     } yield exitCode
   }.drain
 }
