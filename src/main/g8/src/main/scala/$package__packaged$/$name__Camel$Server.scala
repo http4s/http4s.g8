@@ -34,7 +34,7 @@ object $name;format="Camel"$Server {
           .withPort(8080)
           .withHttpApp(finalHttpApp)
           .build >>
-        Resource.liftF(Async[F].never)
+        Resource.eval(Async[F].never)
       )
     } yield exitCode
   }.drain
