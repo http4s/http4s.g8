@@ -22,7 +22,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest]
-        scala: [2.12.13]
+        scala: [2.12.14]
         java: [adopt@1.8, graalvm-ce-java11@]
         exclude:
           - os: macos-latest
@@ -35,7 +35,7 @@ jobs:
           fetch-depth: 0
 
       - name: Setup Java and Scala
-        uses: olafurpg/setup-scala@v10
+        uses: olafurpg/setup-scala@v12
         with:
           java-version: ${{ matrix.java }}
 
