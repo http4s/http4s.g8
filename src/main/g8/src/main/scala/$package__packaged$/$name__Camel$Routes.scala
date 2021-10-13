@@ -1,16 +1,13 @@
 package $package$
 
-import cats.effect.Sync
-import cats.implicits._
+import cats.effect.IO
 import org.http4s.HttpRoutes
-import org.http4s.dsl.Http4sDsl
+import org.http4s.dsl.io._
 
 object $name;format="Camel"$Routes {
 
-  def jokeRoutes[F[_]: Sync](J: Jokes[F]): HttpRoutes[F] = {
-    val dsl = new Http4sDsl[F]{}
-    import dsl._
-    HttpRoutes.of[F] {
+  def jokeRoutes(J: Jokes): HttpRoutes[IO] = {
+    HttpRoutes.of[IO] {
       case GET -> Root / "joke" =>
         for {
           joke <- J.get
@@ -19,10 +16,8 @@ object $name;format="Camel"$Routes {
     }
   }
 
-  def helloWorldRoutes[F[_]: Sync](H: HelloWorld[F]): HttpRoutes[F] = {
-    val dsl = new Http4sDsl[F]{}
-    import dsl._
-    HttpRoutes.of[F] {
+  def helloWorldRoutes(H: HelloWorld): HttpRoutes[IO] = {
+    HttpRoutes.of[IO] {
       case GET -> Root / "hello" / name =>
         for {
           greeting <- H.hello(HelloWorld.Name(name))
