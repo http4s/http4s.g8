@@ -5,9 +5,9 @@ import cats.implicits._
 import org.http4s.HttpRoutes
 import org.http4s.dsl.Http4sDsl
 
-object $name;format="Camel"$Routes {
+object $name;format="Camel"$Routes:
 
-  def jokeRoutes[F[_]: Sync](J: Jokes[F]): HttpRoutes[F] = {
+  def jokeRoutes[F[_]: Sync](J: Jokes[F]): HttpRoutes[F] =
     val dsl = new Http4sDsl[F]{}
     import dsl._
     HttpRoutes.of[F] {
@@ -17,9 +17,8 @@ object $name;format="Camel"$Routes {
           resp <- Ok(joke)
         } yield resp
     }
-  }
 
-  def helloWorldRoutes[F[_]: Sync](H: HelloWorld[F]): HttpRoutes[F] = {
+  def helloWorldRoutes[F[_]: Sync](H: HelloWorld[F]): HttpRoutes[F] =
     val dsl = new Http4sDsl[F]{}
     import dsl._
     HttpRoutes.of[F] {
@@ -29,5 +28,3 @@ object $name;format="Camel"$Routes {
           resp <- Ok(greeting)
         } yield resp
     }
-  }
-}

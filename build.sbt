@@ -6,16 +6,6 @@ ThisBuild / githubWorkflowBuild := Seq(
   WorkflowStep.Sbt(
     List("g8Test"),
     name = Some("Test generated template")
-  ),
-  WorkflowStep.Run(
-    List(
-      "cd target/sbt-test/http4s-g8/scripted",
-      "sbt assembly",
-      "gu install native-image",
-      "cat native-image-readme.md | grep 'native-image  -H*' | sh"
-    ),
-    cond = Some("startsWith(matrix.java, 'graalvm-')"),
-    name = Some("Build native assembly")
   )
 )
 ThisBuild / githubWorkflowJavaVersions := Seq("adopt@1.8", "graalvm-ce-java11@")
