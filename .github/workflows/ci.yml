@@ -21,12 +21,9 @@ jobs:
     name: Build and Test
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest]
+        os: [ubuntu-latest]
         scala: [2.12.14]
-        java: [adopt@1.8, graalvm-ce-java11@]
-        exclude:
-          - os: macos-latest
-            java: adopt@1.8
+        java: [adopt@1.8, adopt@1.11, adopt@1.15]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout current branch (full)

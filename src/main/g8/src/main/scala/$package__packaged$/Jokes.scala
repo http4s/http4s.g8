@@ -14,7 +14,7 @@ trait Jokes[F[_]]:
   def get: F[Jokes.Joke]
 
 object Jokes:
-  def apply[F[_]](implicit ev: Jokes[F]): Jokes[F] = ev
+  def apply[F[_]](using ev: Jokes[F]): Jokes[F] = ev
 
   final case class Joke(joke: String)
   object Joke:

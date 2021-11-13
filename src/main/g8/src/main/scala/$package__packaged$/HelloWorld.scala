@@ -10,7 +10,7 @@ trait HelloWorld[F[_]]:
   def hello(n: HelloWorld.Name): F[HelloWorld.Greeting]
 
 object HelloWorld:
-  implicit def apply[F[_]](implicit ev: HelloWorld[F]): HelloWorld[F] = ev
+  def apply[F[_]](using ev: HelloWorld[F]): HelloWorld[F] = ev
 
   final case class Name(name: String) extends AnyVal
   /**
