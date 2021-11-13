@@ -9,7 +9,7 @@ import org.http4s.ember.server.EmberServerBuilder
 import org.http4s.implicits._
 import org.http4s.server.middleware.Logger
 
-object $name;format="Camel"$Server {
+object $name;format="Camel"$Server:
 
   def stream[F[_]: Async]: Stream[F, Nothing] = {
     for {
@@ -39,4 +39,3 @@ object $name;format="Camel"$Server {
       )
     } yield exitCode
   }.drain
-}
