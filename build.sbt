@@ -18,10 +18,16 @@ ThisBuild / githubWorkflowBuild := Seq(
     name = Some("Build native assembly")
   )
 )
-ThisBuild / githubWorkflowJavaVersions := Seq("adopt@1.8", "graalvm-ce-java11@")
-ThisBuild / githubWorkflowOSes := Seq("ubuntu-latest", "macos-latest")
-ThisBuild / githubWorkflowBuildMatrixExclusions := Seq(MatrixExclude(Map("os" -> "macos-latest", "java" -> "adopt@1.8")))
+
+val PrimaryOS = "ubuntu-latest"
+ThisBuild / githubWorkflowOSes := Seq(PrimaryOS)
+ThisBuild / githubWorkflowEnv += ("JABBA_INDEX" -> "https://github.com/typelevel/jdk-index/raw/main/index.json")
 ThisBuild / githubWorkflowPublishTargetBranches := Seq.empty
+
+val PrimaryJava = JavaSpec.temurin("8")
+val LTSJava = JavaSpec.temurin("17")
+val GraalVM11 = JavaSpec.graalvm("20.3.1", "11")
+ThisBuild / githubWorkflowJavaVersions := Seq(PrimaryJava, LTSJava, GraalVM11)
 
 lazy val root = project.in(file("."))
   .settings(
