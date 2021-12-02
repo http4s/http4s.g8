@@ -20,7 +20,8 @@ ThisBuild / githubWorkflowBuild := Seq(
 )
 
 val PrimaryOS = "ubuntu-latest"
-ThisBuild / githubWorkflowOSes := Seq(PrimaryOS)
+val MacOS = "macos-latest"
+ThisBuild / githubWorkflowOSes := Seq(PrimaryOS, MacOS)
 ThisBuild / githubWorkflowEnv += ("JABBA_INDEX" -> "https://github.com/typelevel/jdk-index/raw/main/index.json")
 ThisBuild / githubWorkflowPublishTargetBranches := Seq.empty
 
@@ -28,6 +29,7 @@ val PrimaryJava = JavaSpec.temurin("8")
 val LTSJava = JavaSpec.temurin("17")
 val GraalVM11 = JavaSpec.graalvm("20.3.1", "11")
 ThisBuild / githubWorkflowJavaVersions := Seq(PrimaryJava, LTSJava, GraalVM11)
+
 
 lazy val root = project.in(file("."))
   .settings(
