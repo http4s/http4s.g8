@@ -18,7 +18,7 @@ lazy val root = (project in file("."))
       "io.circe"        %% "circe-generic"       % CirceVersion,
       "org.scalameta"   %% "munit"               % MunitVersion           % Test,
       "org.typelevel"   %% "munit-cats-effect-3" % MunitCatsEffectVersion % Test,
-      "ch.qos.logback"  %  "logback-classic"     % LogbackVersion,
+      "ch.qos.logback"  %  "logback-classic"     % LogbackVersion         % Runtime,
       $if(graal_native_image.truthy)$
       "org.scalameta"   %% "svm-subs"            % "20.2.0"
       $endif$
