@@ -27,7 +27,7 @@ object HelloWorld {
       )
     }
     implicit def greetingEntityEncoder[F[_]]: EntityEncoder[F, Greeting] =
-      jsonEncoderOf[F, Greeting]
+      jsonEncoderOf[Greeting]
   }
 
   def impl[F[_]: Applicative]: HelloWorld[F] = new HelloWorld[F]{
