@@ -4,7 +4,7 @@ This template is based on a final tagless architecture.  For an alternate versio
 
 ## Instructions
 
-Generate an http4s service on the blaze backend with Circe.
+Generate an http4s service on the ember backend with Circe.
 
 1. [Install sbt](http://www.scala-sbt.org/1.0/docs/Setup.html)
 2. `sbt new http4s/http4s.g8`
