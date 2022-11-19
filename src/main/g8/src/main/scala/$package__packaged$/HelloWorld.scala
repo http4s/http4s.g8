@@ -10,8 +10,6 @@ trait HelloWorld[F[_]]:
   def hello(n: HelloWorld.Name): F[HelloWorld.Greeting]
 
 object HelloWorld:
-  def apply[F[_]](using ev: HelloWorld[F]): HelloWorld[F] = ev
-
   final case class Name(name: String) extends AnyVal
   /**
     * More generally you will want to decouple your edge representations from
