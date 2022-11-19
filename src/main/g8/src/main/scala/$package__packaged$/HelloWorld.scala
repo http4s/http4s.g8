@@ -11,8 +11,6 @@ trait HelloWorld[F[_]]{
 }
 
 object HelloWorld {
-  implicit def apply[F[_]](implicit ev: HelloWorld[F]): HelloWorld[F] = ev
-
   final case class Name(name: String) extends AnyVal
   /**
     * More generally you will want to decouple your edge representations from
