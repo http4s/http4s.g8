@@ -8,7 +8,12 @@ ThisBuild / githubWorkflowBuild := Seq(
     name = Some("Test generated template")
   )
 )
-ThisBuild / githubWorkflowJavaVersions := Seq("adopt@1.8", "adopt@1.11", "adopt@1.15")
+ThisBuild / githubWorkflowJavaVersions := Seq(
+  JavaSpec(JavaSpec.Distribution.Adopt, "8"),
+  JavaSpec(JavaSpec.Distribution.Adopt, "11"),
+  JavaSpec(JavaSpec.Distribution.Adopt, "15"),
+  JavaSpec(JavaSpec.Distribution.Adopt, "17")
+)
 ThisBuild / githubWorkflowPublishTargetBranches := Seq.empty
 
 lazy val root = project.in(file("."))
