@@ -6,9 +6,9 @@ ThisBuild / githubWorkflowBuild := Seq(
   WorkflowStep.Sbt(List("g8Test"), name = Some("Test generated template"))
 )
 ThisBuild / githubWorkflowJavaVersions := Seq(
-  JavaSpec(JavaSpec.Distribution.Adopt, "8"),
-  JavaSpec(JavaSpec.Distribution.Adopt, "11"),
-  JavaSpec(JavaSpec.Distribution.Adopt, "17")
+  JavaSpec.temurin("8"),
+  JavaSpec.temurin("11"),
+  JavaSpec.temurin("17")
 )
 ThisBuild / githubWorkflowPublishTargetBranches := Seq.empty
 
