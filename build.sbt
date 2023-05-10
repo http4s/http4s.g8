@@ -10,9 +10,9 @@ val PrimaryOS = "ubuntu-latest"
 val MacOS = "macos-latest"
 ThisBuild / githubWorkflowOSes := Seq(PrimaryOS, MacOS)
 ThisBuild / githubWorkflowJavaVersions := Seq(
-  JavaSpec(JavaSpec.Distribution.Adopt, "8"),
-  JavaSpec(JavaSpec.Distribution.Adopt, "11"),
-  JavaSpec(JavaSpec.Distribution.Adopt, "17")
+  JavaSpec.temurin("8"),
+  JavaSpec.temurin("11"),
+  JavaSpec.temurin("17")
 )
 ThisBuild / githubWorkflowPublishTargetBranches := Seq.empty
 
