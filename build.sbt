@@ -12,7 +12,8 @@ ThisBuild / githubWorkflowOSes := Seq(PrimaryOS, MacOS)
 ThisBuild / githubWorkflowJavaVersions := Seq(
   JavaSpec.temurin("8"),
   JavaSpec.temurin("11"),
-  JavaSpec.temurin("17")
+  JavaSpec.temurin("17"),
+  JavaSpec.graalvm("11")
 )
 ThisBuild / githubWorkflowPublishTargetBranches := Seq.empty
 
