@@ -114,7 +114,7 @@ jobs:
         run: sbt '++ ${{ matrix.scala }}' g8Test
 
       - name: Build native assembly
-        if: startsWith(matrix.java, 'graalvm-')
+        if: startsWith(matrix.java, 'graalvm')
         run: |
           cd target/sbt-test/http4s-g8/scripted
           sbt assembly
