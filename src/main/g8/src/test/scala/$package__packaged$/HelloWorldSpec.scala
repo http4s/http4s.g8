@@ -1,8 +1,8 @@
 package $package$
 
 import cats.effect.IO
-import org.http4s._
-import org.http4s.implicits._
+import org.http4s.*
+import org.http4s.implicits.*
 import munit.CatsEffectSuite
 
 class HelloWorldSpec extends CatsEffectSuite:
