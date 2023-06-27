@@ -8,8 +8,13 @@ ThisBuild / githubWorkflowBuild := Seq(
 ThisBuild / githubWorkflowJavaVersions := Seq(
   JavaSpec.temurin("8"),
   JavaSpec.temurin("11"),
-  JavaSpec.temurin("17")
+  JavaSpec.temurin("17"),
+  JavaSpec.graalvm("11")
 )
+
+val PrimaryOS = "ubuntu-latest"
+val MacOS = "macos-latest"
+ThisBuild / githubWorkflowOSes := Seq(PrimaryOS, MacOS)
 ThisBuild / githubWorkflowPublishTargetBranches := Seq.empty
 
 lazy val root = project
