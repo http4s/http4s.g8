@@ -19,7 +19,7 @@ object $name;format="Camel"$Server:
 
       // Combine Service Routes into an HttpApp.
       // Can also be done via a Router if you
-      // want to extract a segments not checked
+      // want to extract segments not checked
       // in the underlying routes.
       httpApp = (
         $name;format="Camel"$Routes.helloWorldRoutes[F](helloWorldAlg) <+>
