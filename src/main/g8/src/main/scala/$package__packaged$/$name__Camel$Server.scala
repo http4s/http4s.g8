@@ -3,6 +3,7 @@ package $package$
 import cats.effect.Async
 import cats.syntax.all._
 import com.comcast.ip4s._
+import fs2.io.net.Network
 import org.http4s.ember.client.EmberClientBuilder
 import org.http4s.ember.server.EmberServerBuilder
 import org.http4s.implicits._
@@ -10,7 +11,7 @@ import org.http4s.server.middleware.Logger
 
 object $name;format="Camel"$Server {
 
-  def run[F[_]: Async]: F[Nothing] = {
+  def run[F[_]: Async: Network]: F[Nothing] = {
     for {
       client <- EmberClientBuilder.default[F].build
       helloWorldAlg = HelloWorld.impl[F]
