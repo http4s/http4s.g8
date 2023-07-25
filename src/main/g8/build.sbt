@@ -18,5 +18,8 @@ lazy val root = (project in file("."))
       "org.typelevel"   %% "munit-cats-effect-3" % MunitCatsEffectVersion % Test,
       "ch.qos.logback"  %  "logback-classic"     % LogbackVersion,
     ),
-    testFrameworks += new TestFramework("munit.Framework")
+    assembly / assemblyMergeStrategy := {
+      case "module-info.class" => MergeStrategy.discard
+      case x => (assembly / assemblyMergeStrategy).value.apply(x)
+    }
   )
