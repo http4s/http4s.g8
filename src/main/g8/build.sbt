@@ -1,8 +1,8 @@
-val Http4sVersion = "$http4s_version$"
-val CirceVersion = "$circe_version$"
-val MunitVersion = "$munit_version$"
-val LogbackVersion = "$logback_version$"
-val MunitCatsEffectVersion = "$munit_cats_effect_version$"
+val Http4sVersion = "0.23.20"
+val CirceVersion = "0.14.5"
+val MunitVersion = "0.7.29"
+val LogbackVersion = "1.4.8"
+val MunitCatsEffectVersion = "1.0.7"
 
 lazy val root = (project in file("."))
   .settings(
