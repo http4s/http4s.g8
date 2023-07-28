@@ -23,7 +23,7 @@ ThisBuild / githubWorkflowJavaVersions := Seq(
   JavaSpec.temurin("8"),
   JavaSpec.temurin("11"),
   JavaSpec.temurin("17"),
-  JavaSpec.graalvm("11")
+  JavaSpec.graalvm("17")
 )
 ThisBuild / githubWorkflowPublishTargetBranches := Seq.empty
 
