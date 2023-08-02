@@ -23,14 +23,30 @@ ThisBuild / githubWorkflowJavaVersions := Seq(
   JavaSpec.temurin("8"),
   JavaSpec.temurin("11"),
   JavaSpec.temurin("17"),
-  JavaSpec.graalvm("11")
+  JavaSpec.graalvm("17")
 )
 ThisBuild / githubWorkflowPublishTargetBranches := Seq.empty
+
+val Http4sVersion = "0.23.23"
+val CirceVersion = "0.14.5"
+val MunitVersion = "0.7.29"
+val LogbackVersion = "1.4.8"
+val MunitCatsEffectVersion = "1.0.7"
 
 lazy val root = project
   .in(file("."))
   .settings(
     name := "http4s-g8",
+    libraryDependencies ++= Seq(
+      "org.http4s"      %% "http4s-ember-server" % Http4sVersion,
+      "org.http4s"      %% "http4s-ember-client" % Http4sVersion,
+      "org.http4s"      %% "http4s-circe"        % Http4sVersion,
+      "org.http4s"      %% "http4s-dsl"          % Http4sVersion,
+      "io.circe"        %% "circe-generic"       % CirceVersion,
+      "org.scalameta"   %% "munit"               % MunitVersion           % Test,
+      "org.typelevel"   %% "munit-cats-effect-3" % MunitCatsEffectVersion % Test,
+      "ch.qos.logback"  %  "logback-classic"     % LogbackVersion         % Runtime,
+    ),
     Test / test := {
       val _ = (Test / g8Test).toTask("").value
     },
