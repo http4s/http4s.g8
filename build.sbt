@@ -47,8 +47,8 @@ lazy val root = project
       "org.typelevel"   %% "munit-cats-effect-3" % MunitCatsEffectVersion % Test,
       "ch.qos.logback"  %  "logback-classic"     % LogbackVersion         % Runtime,
     ),
-    test in Test := {
-      val _ = (g8Test in Test).toTask("").value
+    Test / test := {
+      val _ = (Test / g8Test).toTask("").value
     },
     scriptedLaunchOpts ++= List(
       "-Xms1024m",
