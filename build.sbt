@@ -20,7 +20,6 @@ val PrimaryOS = "ubuntu-latest"
 val MacOS = "macos-latest"
 ThisBuild / githubWorkflowOSes := Seq(PrimaryOS, MacOS)
 ThisBuild / githubWorkflowJavaVersions := Seq(
-  JavaSpec.temurin("8"),
   JavaSpec.temurin("11"),
   JavaSpec.temurin("17"),
   JavaSpec.graalvm("17")
