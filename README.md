@@ -10,6 +10,7 @@ Generate an http4s service on the ember backend with Circe.
 2. Create your project:
    - Scala 2: `sbt new http4s/http4s.g8` 
    - Scala 3: `sbt new http4s/http4s.g8 --branch 0.23-scala3`
+   - Java 8: `sbt new http4s/http4s.g8 --branch 0.23-java8`
 3. `cd quickstart`
 4. `sbt run`
 5. `curl http://localhost:8080/hello/$USER`
