@@ -20,7 +20,6 @@ val PrimaryOS = "ubuntu-latest"
 val MacOS = "macos-latest"
 ThisBuild / githubWorkflowOSes := Seq(PrimaryOS, MacOS)
 ThisBuild / githubWorkflowJavaVersions := Seq(
-  JavaSpec.temurin("8"),
   JavaSpec.temurin("11"),
   JavaSpec.temurin("17"),
   JavaSpec.graalvm("17")
@@ -28,7 +27,7 @@ ThisBuild / githubWorkflowJavaVersions := Seq(
 ThisBuild / githubWorkflowPublishTargetBranches := Seq.empty
 
 val Http4sVersion = "0.23.23"
-val CirceVersion = "0.14.5"
+val CirceVersion = "0.14.6"
 val MunitVersion = "0.7.29"
 val LogbackVersion = "1.4.11"
 val MunitCatsEffectVersion = "1.0.7"
