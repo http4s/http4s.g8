@@ -46,7 +46,7 @@ lazy val root = project
       "org.typelevel"   %% "munit-cats-effect-3" % MunitCatsEffectVersion % Test,
       "ch.qos.logback"  %  "logback-classic"     % LogbackVersion         % Runtime,
     ),
-    addSbtPlugin("io.github.davidgregory084" % "sbt-tpolecat" % "0.4.4"),
+    addSbtPlugin("org.typelevel" % "sbt-tpolecat" % "0.5.0"),
     addSbtPlugin("io.spray" % "sbt-revolver" % "0.10.0"),
     addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "2.1.3"),
     Test / test := {
