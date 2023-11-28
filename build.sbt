@@ -29,7 +29,7 @@ ThisBuild / githubWorkflowPublishTargetBranches := Seq.empty
 val Http4sVersion = "0.23.24"
 val CirceVersion = "0.14.6"
 val MunitVersion = "0.7.29"
-val LogbackVersion = "1.4.12"
+val LogbackVersion = "1.4.13"
 val MunitCatsEffectVersion = "1.0.7"
 
 lazy val root = project
