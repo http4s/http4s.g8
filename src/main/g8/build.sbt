@@ -23,7 +23,7 @@ lazy val root = (project in file("."))
       "org.scalameta"   %  "svm-subs"            % "101.0.0"
       $endif$
     ),
-    addCompilerPlugin("org.typelevel" %% "kind-projector"     % "0.13.2" cross CrossVersion.full),
+    addCompilerPlugin("org.typelevel" %% "kind-projector"     % "0.13.3" cross CrossVersion.full),
     addCompilerPlugin("com.olegpy"    %% "better-monadic-for" % "0.3.1"),
     assembly / assemblyMergeStrategy := {
       case "module-info.class" => MergeStrategy.discard
