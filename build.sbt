@@ -26,10 +26,10 @@ ThisBuild / githubWorkflowJavaVersions := Seq(
 )
 ThisBuild / githubWorkflowPublishTargetBranches := Seq.empty
 
-val Http4sVersion = "0.23.25"
-val CirceVersion = "0.14.6"
+val Http4sVersion = "0.23.27"
+val CirceVersion = "0.14.7"
 val MunitVersion = "0.7.29"
-val LogbackVersion = "1.4.14"
+val LogbackVersion = "1.5.6"
 val MunitCatsEffectVersion = "1.0.7"
 
 lazy val root = project
@@ -46,9 +46,9 @@ lazy val root = project
       "org.typelevel"   %% "munit-cats-effect-3" % MunitCatsEffectVersion % Test,
       "ch.qos.logback"  %  "logback-classic"     % LogbackVersion         % Runtime,
     ),
-    addSbtPlugin("org.typelevel" % "sbt-tpolecat" % "0.5.0"),
+    addSbtPlugin("org.typelevel" % "sbt-tpolecat" % "0.5.1"),
     addSbtPlugin("io.spray" % "sbt-revolver" % "0.10.0"),
-    addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "2.1.5"),
+    addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "2.2.0"),
     Test / test := {
       val _ = (Test / g8Test).toTask("").value
     },

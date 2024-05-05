@@ -1,7 +1,7 @@
-val Http4sVersion = "0.23.25"
-val CirceVersion = "0.14.6"
+val Http4sVersion = "0.23.27"
+val CirceVersion = "0.14.7"
 val MunitVersion = "0.7.29"
-val LogbackVersion = "1.4.14"
+val LogbackVersion = "1.5.6"
 val MunitCatsEffectVersion = "1.0.7"
 
 lazy val root = (project in file("."))
@@ -9,7 +9,7 @@ lazy val root = (project in file("."))
     organization := "$organization$",
     name := "$name;format="norm"$",
     version := "0.0.1-SNAPSHOT",
-    scalaVersion := "3.3.0",
+    scalaVersion := "3.3.3",
     libraryDependencies ++= Seq(
       "org.http4s"      %% "http4s-ember-server" % Http4sVersion,
       "org.http4s"      %% "http4s-ember-client" % Http4sVersion,
