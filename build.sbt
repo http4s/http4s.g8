@@ -30,7 +30,7 @@ val Http4sVersion = "0.23.27"
 val CirceVersion = "0.14.7"
 val MunitVersion = "1.0.0"
 val LogbackVersion = "1.5.6"
-val MunitCatsEffectVersion = "1.0.7"
+val MunitCatsEffectVersion = "2.0.0"
 
 lazy val root = project
   .in(file("."))
@@ -43,7 +43,7 @@ lazy val root = project
       "org.http4s"      %% "http4s-dsl"          % Http4sVersion,
       "io.circe"        %% "circe-generic"       % CirceVersion,
       "org.scalameta"   %% "munit"               % MunitVersion           % Test,
-      "org.typelevel"   %% "munit-cats-effect-3" % MunitCatsEffectVersion % Test,
+      "org.typelevel"   %% "munit-cats-effect" % MunitCatsEffectVersion % Test,
       "ch.qos.logback"  %  "logback-classic"     % LogbackVersion         % Runtime,
     ),
     addSbtPlugin("org.typelevel" % "sbt-tpolecat" % "0.5.1"),
