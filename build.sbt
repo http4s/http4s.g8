@@ -43,7 +43,7 @@ lazy val root = project
       "org.http4s"      %% "http4s-dsl"          % Http4sVersion,
       "io.circe"        %% "circe-generic"       % CirceVersion,
       "org.scalameta"   %% "munit"               % MunitVersion           % Test,
-      "org.typelevel"   %% "munit-cats-effect" % MunitCatsEffectVersion % Test,
+      "org.typelevel"   %% "munit-cats-effect"   % MunitCatsEffectVersion % Test,
       "ch.qos.logback"  %  "logback-classic"     % LogbackVersion         % Runtime,
     ),
     addSbtPlugin("org.typelevel" % "sbt-tpolecat" % "0.5.1"),
