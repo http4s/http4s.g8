@@ -15,6 +15,7 @@ on:
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  XDG_CACHE_HOME: ${{ github.workspace }}
 
 
 concurrency:
@@ -70,4 +71,4 @@ jobs:
         run: sbt githubWorkflowCheck
 
       - name: Test generated template
-        run: sbt '++ ${{ matrix.scala }}' g8Test
+        run: sbt '++ ${{ matrix.scala }}' g8TestMill

@@ -26,3 +26,8 @@ project/plugins/project/
 .bloop
 .bsp/
 .vscode/
+
+# SBT template files
+src/main/g8/build.sbt
+src/main/g8/project/build.properties
+src/main/g8/project/plugins.sbt

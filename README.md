@@ -6,13 +6,11 @@ This template is based on a final tagless architecture.  For an alternate versio
 
 Generate an http4s service on the ember backend with Circe.
 
-1. [Install sbt](http://www.scala-sbt.org/1.0/docs/Setup.html)
+1. [Install mill](https://mill-build.org/mill/cli/installation-ide.html)
 2. Create your project:
-   - Scala 2: `sbt new http4s/http4s.g8` 
-   - Scala 3: `sbt new http4s/http4s.g8 --branch 0.23-scala3`
-   - Java 8: `sbt new http4s/http4s.g8 --branch 0.23-java8`
+   - Scala 2: `mill -i init http4s/http4s.g8 --branch 0.23-mill`
 3. `cd quickstart`
-4. `sbt run`
+4. `mill run`
 5. `curl http://localhost:8080/hello/$USER`
 6. [Learn more](http://http4s.org/)
 
