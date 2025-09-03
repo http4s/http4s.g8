@@ -16,10 +16,10 @@ ThisBuild / githubWorkflowJavaVersions := Seq(
 ThisBuild / githubWorkflowPublishTargetBranches := Seq.empty
 
 val Http4sVersion = "0.23.30"
-val CirceVersion = "0.14.10"
-val MunitVersion = "1.1.0"
-val LogbackVersion = "1.5.16"
-val MunitCatsEffectVersion = "2.0.0"
+val CirceVersion = "0.14.14"
+val MunitVersion = "1.1.1"
+val LogbackVersion = "1.5.18"
+val MunitCatsEffectVersion = "2.1.0"
 
 lazy val root = project
   .in(file("."))
