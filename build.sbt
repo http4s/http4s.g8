@@ -22,11 +22,11 @@ ThisBuild / githubWorkflowJavaVersions := Seq(
 )
 ThisBuild / githubWorkflowPublishTargetBranches := Seq.empty
 
-val Http4sVersion = "0.23.30"
-val CirceVersion = "0.14.10"
-val MunitVersion = "1.1.0"
-val LogbackVersion = "1.5.16"
-val MunitCatsEffectVersion = "2.0.0"
+val Http4sVersion = "0.23.33"
+val CirceVersion = "0.14.15"
+val MunitVersion = "1.2.4"
+val LogbackVersion = "1.5.32"
+val MunitCatsEffectVersion = "2.2.0"
 
 val g8TestMill = taskKey[Unit]("Test generated template for Mill")
 
@@ -44,7 +44,7 @@ lazy val root = project
       "org.typelevel"   %% "munit-cats-effect"   % MunitCatsEffectVersion % Test,
       "ch.qos.logback"  %  "logback-classic"     % LogbackVersion         % Runtime,
     ),
-    addSbtPlugin("org.typelevel" % "sbt-tpolecat" % "0.5.2"),
+    addSbtPlugin("org.typelevel" % "sbt-tpolecat" % "0.5.3"),
     addSbtPlugin("io.spray" % "sbt-revolver" % "0.10.0"),
     addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "2.3.1"),
     Test / g8TestMill := {
