@@ -37,7 +37,7 @@ lazy val root = project
     ),
     addSbtPlugin("org.typelevel" % "sbt-tpolecat" % "0.5.7"),
     addSbtPlugin("io.spray" % "sbt-revolver" % "0.10.0"),
-    addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "2.4.2"),
+    addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "2.5.0"),
     Test / test := {
       val _ = (Test / g8Test).toTask("").value
     },
